@@ -1,11 +1,9 @@
 @tool
-class_name HitBox
+class_name HurtBox
 extends CollisionBox
 
-signal hit(hurtbox: HurtBox)
+signal was_hit(hitbox: HitBox)
 
-@export var damage: int = 0
-@export var stun: int = 0
 @export var is_active: bool = false
 
 func _init() -> void:
@@ -17,8 +15,8 @@ func _ready() -> void:
 func _on_collision(collision_box: CollisionBox) -> void:
 	if not is_active:
 		return
-	if collision_box is not HurtBox:
+	if collision_box is not HitBox:
 		return
 	
-	var box = collision_box as HurtBox
-	hit.emit(box)
+	var box = collision_box as HitBox
+	was_hit.emit(box)
