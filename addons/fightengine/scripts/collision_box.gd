@@ -5,6 +5,8 @@ extends Area2D
 
 signal collision(collider: CollisionBox)
 
+@export var is_active: bool = true
+
 @export var shape: Shape2D:
 	set(value):
 		shape = value
@@ -16,9 +18,9 @@ func _init() -> void:
 	area_entered.connect(_on_area_entered)
 
 func _ready() -> void:
+	add_child(collision_shape)
 	
-	if collision_shape.get_parent() == null:
-		add_child(collision_shape)
+	if collision_shape.get_children() == null:
 		if Engine.is_editor_hint():
 			collision_shape.owner = get_tree().edited_scene_root
 	
@@ -33,8 +35,6 @@ func _update_collision_shape() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is not CollisionBox:
 		return
-	
 	var box = area as CollisionBox
-	
-	box.collision.emit(self)
+	if not box.is_active or not is_active: return
 	collision.emit(box)
