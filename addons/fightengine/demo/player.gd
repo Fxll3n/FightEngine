@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var hit_box: HitBox = $Sprite2D/HitBox
-@onready var hurt_box: HurtBox = $Sprite2D/HurtBox
+@onready var hit_box: HitBox2D = $Sprite2D/HitBox
+@onready var hurt_box: HurtBox2D = $Sprite2D/HurtBox
 
 
 var movement_input: Vector2 = Vector2.ZERO

@@ -1,9 +1,9 @@
 @tool
 @abstract
-class_name CollisionBox
+class_name CollisionBox2D
 extends Area2D
 
-signal collision(collider: CollisionBox)
+signal collision(collider: CollisionBox2D)
 
 @export var is_active: bool = true
 
@@ -33,8 +33,8 @@ func _update_collision_shape() -> void:
 	collision_shape.shape = shape
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is not CollisionBox:
+	if area is not CollisionBox2D:
 		return
-	var box = area as CollisionBox
+	var box = area as CollisionBox2D
 	if not box.is_active or not is_active: return
 	collision.emit(box)
