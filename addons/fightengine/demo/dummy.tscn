@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cg2v7ippohgox"]
 
-[ext_resource type="Script" uid="uid://bxkg84rfumnga" path="res://addons/fightengine/demo/dummy.gd" id="1_1324b"]
+[ext_resource type="Script" uid="uid://bxkg84rfumnga" path="res://addons/fightengine/demo/scripts/dummy.gd" id="1_1324b"]
 [ext_resource type="Texture2D" uid="uid://c35p05a0a0co6" path="res://addons/fightengine/demo/Assets/Spritesheets/Enemy Punk/idle.png" id="2_stcs8"]
 [ext_resource type="Texture2D" uid="uid://di0mord3ny4p8" path="res://addons/fightengine/demo/Assets/Spritesheets/Enemy Punk/hurt.png" id="3_0lhgj"]
 [ext_resource type="Script" uid="uid://duykthh1p76v2" path="res://addons/fightengine/scripts/hurtbox.gd" id="4_k6daa"]
