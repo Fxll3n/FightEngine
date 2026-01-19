@@ -11,13 +11,31 @@ extends CharacterBody2D
 @onready var move_state: LimboState = $LimboHSM/Move
 @onready var attack_state: LimboState = $LimboHSM/Attack
 
+var input_vector: Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	_init_state_machine()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("punch"):
+	if event.is_action_pressed("z"):
 		var cur_state = hsm.get_active_state()
+		var anim = "moves/"+_get_move_id("z")
+		if not anim_player.has_animation(anim): return
+		attack_state.anim_name = anim
 		cur_state.dispatch("attack")
+	elif event.is_action_pressed("x"):
+		var cur_state = hsm.get_active_state()
+		var anim = "moves/"+_get_move_id("x")
+		if not anim_player.has_animation(anim): return
+		attack_state.anim_name = anim
+		cur_state.dispatch("attack")
+	elif event.is_action_pressed("c"):
+		var cur_state = hsm.get_active_state()
+		var anim = "moves/"+_get_move_id("c")
+		if not anim_player.has_animation(anim): return
+		attack_state.anim_name = anim
+		cur_state.dispatch("attack")
+		
 
 func _process(delta: float) -> void:
 	flip_sprite()
@@ -45,3 +63,18 @@ func flip_sprite() -> void:
 		sprite.scale.x = -1
 	elif velocity.x > 0:
 		sprite.scale.x = 1
+
+func _get_move_id(action: String) -> StringName:
+	var direction_name: String = "neutral"
+	match input_vector:
+		Vector2.LEFT:
+			direction_name = "left"
+		Vector2.RIGHT:
+			direction_name = "right"
+		Vector2.UP:
+			direction_name = "up"
+		Vector2.DOWN:
+			direction_name = "down"
+	
+	var move_id = &"{direction}_{action}".format({"direction": direction_name, "action": action})
+	return move_id

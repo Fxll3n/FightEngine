@@ -18,7 +18,7 @@ func _update(delta: float) -> void:
 		agent.velocity.x = move_toward(agent.velocity.x, 0, friction * delta)
 
 func _exit() -> void:
-	pass
+	anim_name = ""
 
 func _on_finished(name: StringName) -> void:
 	dispatch(EVENT_FINISHED)

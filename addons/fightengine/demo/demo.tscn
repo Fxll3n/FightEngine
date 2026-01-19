@@ -556,3 +556,11 @@ limit_bottom = 180
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -40)
 zoom = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 124.0
+offset_right = 267.0
+offset_bottom = 173.0
+text = "WASD to move
+Z/X/C + Movement = Attacks"

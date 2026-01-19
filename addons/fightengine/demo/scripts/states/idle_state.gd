@@ -8,7 +8,7 @@ var input_vector: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 
 func _enter() -> void:
-	anim_player.play(anim_name)
+	anim_player.play("moves/"+anim_name)
 
 func _update(delta: float) -> void:
 	input_vector = Vector2(Input.get_axis("left","right"), Input.get_axis("down", "up"))

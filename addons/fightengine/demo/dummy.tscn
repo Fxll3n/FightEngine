@@ -332,4 +332,13 @@ script = ExtResource("4_k6daa")
 shape = SubResource("RectangleShape2D_ehkex")
 metadata/_custom_type_script = "uid://duykthh1p76v2"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -22.0
+offset_top = -33.0
+offset_right = 18.0
+offset_bottom = -19.0
+bbcode_enabled = true
+text = "[b][font_size=10][color=red][outline_size=5][outline_color=white][p align=center]"
+scroll_active = false
+
 [connection signal="was_hit" from="HurtBox" to="." method="_on_hurt_box_was_hit"]
