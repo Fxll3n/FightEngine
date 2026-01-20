@@ -1,75 +1,76 @@
+
 # Fight Engine
-A comprehensive Godot 4.5 plugin for creating 2D fighting games with precision and ease.
+
+A comprehensive Godot 4.5+ plugin for creating precision-based 2D fighting games.
 
 ## Overview
-Fxll3n's Fight Engine (FFE) provides essential systems and tools for building 2D fighting games in Godot. Whether you're creating a traditional arcade fighter or a platform fighter, this plugin handles complex mechanics so you can focus on making your game unique.
+
+Fight Engine is a work-in-progress plugin designed to streamline the development of 2D fighting games in Godot 4.5 and above. It provides essential tools for hitbox management and state-based combat systems, allowing developers to focus on game design rather than low-level collision logic.
 
 ## Features
 
-### ✅ Implemented
-- **Hit & Hurt Boxes** - Precise collision detection system for attacks and vulnerable areas
-- **State Machine Integration** - Integrates [LimboAI](https://github.com/limbonaut/limboai) by [limbonaut](https://github.com/limbonaut) for robust character state management
+### Collision System
 
-> **Note**: This plugin uses LimboAI for state management because it provides excellent FSM functionality, supports NPC behavior trees, and offers better performance as a GDExtension (written in C++ rather than GDScript). LimboAI is licensed under the MIT License.
+**HitBox2D & HurtBox2D Nodes**
 
-### 🚧 In Development
-- **Frame Data System** - Define and manage frame-perfect timing for moves and animations
-- **Input Buffer** - Queue and process inputs with frame-accurate timing
-- **Combo System** - Track and validate combo strings
-- **Special Move Detection** - Recognize directional input patterns (e.g., quarter-circles, dragon punches)
+-   Specialized collision nodes that automatically filter irrelevant collisions
+-   Only process collisions from other CollisionBox2D nodes
+-   Simplifies hit detection logic and reduces boilerplate code
 
-## Installation
+### State Management
 
-### From Godot Asset Library (Recommended)
-1. Open Godot and go to the AssetLib tab
-2. Search for "Fight Engine"
-3. Click Download and Install
-4. Enable the plugin in Project → Project Settings → Plugins
+**Integrated State Machine Support**
 
-### Manual Installation
-1. Download the latest release from the [releases page](https://github.com/yourusername/fightengine/releases)
-2. Extract the `addons/fightengine` folder into your project's `addons/` directory
-3. Enable the plugin in Project → Project Settings → Plugins
+-   Demo implementation uses [LimboAI](https://github.com/limbonaut/limboai) by [limbonaut](https://github.com/limbonaut)
+-   High-performance GDExtension for behavior trees and state machines
+-   Significantly faster than GDScript-based alternatives
 
-## Requirements
-- Godot 4.5 or higher
-- [LimboAI plugin](https://github.com/limbonaut/limboai) (install separately or included in this package)
-- Basic knowledge of Godot's node system and GDScript
+## Getting Started
 
-## Quick Start
-1. Enable the Fight Engine plugin in your project settings
-2. Install LimboAI plugin if not already included
-3. Open the demo project included in `addons/fightengine/demo/`
-4. Explore the example fighter character setup
+### Installation
 
-## Documentation
-Full documentation is in development. For now:
-- Check the example in `addons/fightengine/demo/`
+1.  Install the plugin through Godot's AssetLib or by manually copying files to your project's `addons` folder
+2.  Enable the plugin in `Project → Project Settings → Plugins`
+
+### Initial Setup
+
+**Configure Frame Rate** (Recommended)
+
+1.  Navigate to `Project → Project Settings`
+2.  Enable "Advanced Settings"
+3.  Set `Application → Run → Max FPS` to your target frame rate
+    -   Most modern fighting games use 60 FPS
+    -   Consistent frame rates ensure predictable timing and combos
+
+## Design Philosophy
+
+Fight Engine is built around an animation-driven approach to combat:
+
+**Animation-Based Attacks**
+
+-   Use `AnimationPlayer` nodes to create animation libraries
+-   Each animation manipulates HitBox2D and HurtBox2D positions, sizes, and states
+-   Animations define attack hitboxes, active frames, and recovery periods
+-   This approach creates reproducible, frame-perfect attacks
+
+**Example Workflow:**
+
+1.  Create an animation library resource
+2.  Define animations for different moves (jab, kick, special attacks)
+3.  Keyframe hitbox/hurtbox transformations within each animation
+4.  Trigger animations through your state machine or input handler
+
+See the included demo project for a complete implementation example.
+
+## Resources
+
+-   **Demo Project**: Included with the plugin
+-   **LimboAI Documentation**: [github.com/limbonaut/limboai](https://github.com/limbonaut/limboai)
 
 ## Roadmap
-- [ ] Frame Data System
-- [X] State Machine Integration
-- [ ] Input Buffer
-- [ ] Combo System
-- [ ] Special Move Detection
 
-## Dependencies
-This plugin includes or requires:
-- **LimboAI** by limbonaut - [MIT License](https://github.com/limbonaut/limboai/blob/master/LICENSE.md)
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Credits
-- **State Machine**: Uses [LimboAI](https://github.com/limbonaut/limboai) by [limbonaut](https://github.com/limbonaut)
-- **Fight Engine**: Created by Fxll3n
+This plugin is under active development. Planned features and improvements will be added as the project evolves.
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Support
-- Report bugs on the [Issues page](https://github.com/yourusername/fightengine/issues)
-- For questions, use the [Discussions tab](https://github.com/yourusername/fightengine/discussions)
-
-## Changelog
-See [CHANGELOG.md](CHANGELOG.md) for version history.
+Contributions, bug reports, and feature requests are welcome! Please check the issues page or submit a pull request.
