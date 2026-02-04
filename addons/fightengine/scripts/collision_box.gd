@@ -5,7 +5,12 @@ extends Area2D
 
 signal collision(collider: CollisionBox2D)
 
-@export var is_active: bool = true
+@export var is_active: bool = true:
+	set(value):
+		var was_inactive = not is_active
+		is_active = value
+		if was_inactive and is_active:
+			_check_existing_overlaps()
 
 @export var shape: Shape2D:
 	set(value):
@@ -32,9 +37,17 @@ func _update_collision_shape() -> void:
 	
 	collision_shape.shape = shape
 
+func _check_existing_overlaps() -> void:
+	for area in get_overlapping_areas():
+		if area is CollisionBox2D:
+			var box = area as CollisionBox2D
+			if box.is_active:
+				collision.emit(box)
+
 func _on_area_entered(area: Area2D) -> void:
 	if area is not CollisionBox2D:
 		return
 	var box = area as CollisionBox2D
-	if not box.is_active or not is_active: return
+	if not box.is_active or not is_active: 
+		return
 	collision.emit(box)

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://ivjdq3iu1k6r"]
+
+[ext_resource type="Script" uid="uid://b7lkke108s0j0" path="res://addons/fgi/git_ui.gd" id="1_kprvy"]
+
+[node name="Git" type="Control" unique_id=1162410415]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kprvy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2080877151]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=797029245]
+layout_mode = 2
+
+[node name="FetchChanges" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=159460668]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fetch Changes"
+
+[node name="Pull" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=399363292]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pull"
+
+[node name="Push" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1683292935]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Push"
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer" unique_id=876855756]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Commit" type="MarginContainer" parent="VBoxContainer/TabContainer" unique_id=782888386]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Commit" unique_id=2111121496]
+layout_mode = 2
+
+[node name="FileList" type="Tree" parent="VBoxContainer/TabContainer/Commit/VBoxContainer" unique_id=154612544]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+allow_search = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Commit/VBoxContainer" unique_id=1268697564]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CommitMessage" type="TextEdit" parent="VBoxContainer/TabContainer/Commit/VBoxContainer/HBoxContainer" unique_id=289463898]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter Commit Message"
+
+[node name="Commit" type="Button" parent="VBoxContainer/TabContainer/Commit/VBoxContainer/HBoxContainer" unique_id=1863054490]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Commit"
+
+[node name="Status" type="RichTextLabel" parent="VBoxContainer/TabContainer/Commit/VBoxContainer" unique_id=1087869543]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=red][b]Status"

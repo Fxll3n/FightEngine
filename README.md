@@ -39,8 +39,8 @@ Fight Engine is a work-in-progress plugin designed to streamline the development
 1.  Navigate to `Project → Project Settings`
 2.  Enable "Advanced Settings"
 3.  Set `Application → Run → Max FPS` to your target frame rate
-    -   Most modern fighting games use 60 FPS
-    -   Consistent frame rates ensure predictable timing and combos
+	-   Most modern fighting games use 60 FPS
+	-   Consistent frame rates ensure predictable timing and combos
 
 ## Design Philosophy
 
